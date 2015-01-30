@@ -3,6 +3,8 @@
     font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
     color: #232323;
     background-color: #fff;
+  padding-top: 50px;
+  padding-bottom: 20px;
 }
 
 header, footer, nav, section {

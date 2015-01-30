@@ -1,4 +1,4 @@
-﻿<!--<span class="hiddenSpellError" pre=""-->DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <title>@ViewBag.Title Web Poll</title>
@@ -35,7 +35,10 @@
             </div>
         </div>
     </nav>
-    @RenderSection("AboveContainer")
+    @if (IsSectionDefined("AboveContainer"))
+    {
+        @RenderSection("AboveContainer")
+    }
     <div class="container">
         @RenderBody()
 
