@@ -4,17 +4,17 @@
     ViewBag.Title = "";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<!-- Main jumbotron for a primary marketing message or call to action -->
-<div class="jumbotron">
-    <div class="container">
-        <h1>Web Poll</h1>
-        <p>Create your own simple, secure and transparent online poll in minutes! Just click the button below to get started</p>
-        <p><a class="btn btn-primary btn-lg" href="#" role="button">Create your own poll &raquo;</a></p>
+@section AboveContainer
+{
+    <div class="jumbotron">
+        <div class="container">
+            <h1>Web Poll</h1>
+            <p>Create your own simple, secure and transparent online poll in minutes! Just click the button below to get started</p>
+            <p><a class="btn btn-primary btn-lg" href="#" role="button">Create your own poll &raquo;</a></p>
+        </div>
     </div>
-</div>
+}
 
-<div class="container">
-    <!-- Example row of columns -->
     <div class="row">
         <div class="col-md-4">
             <h2>Democratic</h2>
@@ -32,10 +32,3 @@
             <p><a class="btn btn-default" href="#" role="button">Read More &raquo;</a></p>
         </div>
     </div>
-
-    <hr>
-
-    <footer>
-        <p>&copy; Company 2014</p>
-    </footer>
-</div>
