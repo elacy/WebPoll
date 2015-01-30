@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebPoll.Web", "src\WebPoll.Web\WebPoll.Web.csproj", "{928E8177-8687-405E-8FBA-7AB972863792}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{28D33F59-AF86-456C-A26F-01F03E9CE4D5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{25455116-82C5-4B02-BFFF-ED8B673D18F4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebPoll.Web.Tests", "tests\WebPoll.Web.Tests\WebPoll.Web.Tests.csproj", "{A4DE5699-0E27-4800-A9A9-3497AA36BE9C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{928E8177-8687-405E-8FBA-7AB972863792}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{928E8177-8687-405E-8FBA-7AB972863792}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{928E8177-8687-405E-8FBA-7AB972863792}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{928E8177-8687-405E-8FBA-7AB972863792}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4DE5699-0E27-4800-A9A9-3497AA36BE9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4DE5699-0E27-4800-A9A9-3497AA36BE9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4DE5699-0E27-4800-A9A9-3497AA36BE9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4DE5699-0E27-4800-A9A9-3497AA36BE9C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{928E8177-8687-405E-8FBA-7AB972863792} = {28D33F59-AF86-456C-A26F-01F03E9CE4D5}
+		{A4DE5699-0E27-4800-A9A9-3497AA36BE9C} = {25455116-82C5-4B02-BFFF-ED8B673D18F4}
+	EndGlobalSection
+EndGlobal
