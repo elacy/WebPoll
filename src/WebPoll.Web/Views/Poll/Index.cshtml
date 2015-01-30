@@ -1,0 +1,52 @@
+﻿@model dynamic
+
+@{
+    ViewBag.Title = "";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Your Polls</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <a href="#">Which Restaurant do we like?</a>
+            </td>
+            <td>
+                In Progress
+            </td>
+            <td>
+                <a href="#">Delete</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href="#">What 3 things do we want to do on Friday</a>
+            </td>
+            <td>
+                In Progress
+            </td>
+            <td>
+                <a href="#">Delete</a>
+            </td>
+        </tr>
+        <tr class="success">
+            <td>
+                <a href="#">Flavours of donut to have in the meeting</a>
+            </td>
+            <td>
+                Finished
+            </td>
+            <td>
+                <a href="#">Delete</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<a class="btn btn-primary" href="@Url.Action("Create","Poll")" role="button">Create new Poll</a>
