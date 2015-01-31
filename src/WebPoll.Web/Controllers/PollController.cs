@@ -16,7 +16,20 @@ namespace WebPoll.Web.Controllers
             return View();
         }
 
-        public ActionResult Index()
+        public ActionResult Index(int? id)
+        {
+            if (!id.HasValue)
+            {
+                return View();
+            }
+            if (id.Value == 3)
+            {
+                return View("Results");
+            }
+            return View("IncompletePoll");
+        }
+
+        public ActionResult Vote(Guid guid)
         {
             return View();
         }

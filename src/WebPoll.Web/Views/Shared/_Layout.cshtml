@@ -35,10 +35,7 @@
             </div>
         </div>
     </nav>
-    @if (IsSectionDefined("AboveContainer"))
-    {
-        @RenderSection("AboveContainer")
-    }
+    @RenderSection("AboveContainer",false)
     <div class="container">
         @RenderBody()
 

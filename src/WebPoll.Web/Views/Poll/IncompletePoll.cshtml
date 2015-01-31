@@ -1,0 +1,30 @@
+﻿@model dynamic
+
+@{
+    ViewBag.Title = "";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Which Restaurant do we like</h2>
+<p>This Poll isn't finished yet, here are the people who still have to vote, the poll will expire on the 2nd of January</p>
+<table class="table-striped table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Joe Smith</td>
+            <td><a href="mailto:joesmith@joe.ie">joesmith@joe.ie</a></td>
+        </tr>
+        <tr>
+            <td>Jane Smith</td>
+            <td><a href="mailto:joesmith@joe.ie">janesmith@joe.ie</a></td>
+        </tr>
+    </tbody>
+</table>
+
+<a class="btn btn-primary" href="#" role="button">Send a reminder</a>
+<a class="btn btn-warning" href="#" role="button">Finish the poll early</a>
