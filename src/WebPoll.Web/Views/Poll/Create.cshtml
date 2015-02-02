@@ -2,55 +2,80 @@
 
 @{
     ViewBag.Title = "Create";
-    Layout =  "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <h2>Create a poll</h2>
 <form>
-    <div class="form-group">
-        <label for="pollName">Poll Name</label>
-        <input type="text" class="form-control" id="pollName" placeholder="Enter Poll Name">
+    <div id="pollSettings">
+        <div class="form-group">
+            <label for="pollName">Poll Name</label>
+            <input type="text" class="form-control" data-bind="text:pollName" id="pollName" placeholder="Enter Poll Name">
+        </div>
+        <div class="form-group">
+            <label for="pollOption">Poll Options</label>
+            <ul class="formList" data-bind="foreach: pollOptions ">
+                <li>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="pollOption" data-bind="text:pollName" placeholder="Enter Option Name">
+                        <span class="input-group-btn">
+                            <a class="btn btn-danger" data-bind="click: $root.pollOptions().length > 1 && $root.deleteOption" href="#" title="Delete Poll Option">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span><span class="sr-only">Delete Poll Option</span>
+                            </a>
+                        </span>
+                    </div>
+                </li>
+            </ul>
+            <button class="btn btn-success" data-bind="click: addNewPollOption">Add new poll option</button>
+        </div>
+        <div class="form-group">
+            <label for="winningOptions">How many winning options can there be?</label>
+            <input type="number" class="form-control" data-bind="text: winningOptions" id="winningOptions" placeholder="Enter number of winning options here">
+        </div>
+        <div class="form-group">
+            <label for="pollLength">When should the poll end?</label>
+            <input type="date" data-bind="text: pollLength" class="form-control" id="pollLength" placeholder="Enter the date here">
+        </div>
     </div>
-    <div class="form-group">
-        <label for="pollOption">Poll Options</label>
-        <input type="text" class="form-control" id="pollOption" placeholder="Enter Option Name">
+    <div id="voterSettings">
+        <div class="form-group">
+            <label for="voterEmail">Voter Details</label>
+            <ul class="formList" data-bind="foreach: voters ">
+                <li class="row">
+                    <div class="col-xs-6"><input type="email" class="form-control" data-bind="text: name" id="voterEmail" placeholder="Enter voter name"></div>
+                    <div class="col-xs-5"><input type="email" class="form-control" data-bind="text: email" id="voterEmail" placeholder="Enter voter email"></div>
+                    <div class="col-xs-1">
+                        <a class="btn btn-danger" data-bind="click: $root.voters().length > 1 && $root.deleteVoter" href="#" title="Delete Voter">
+                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span><span class="sr-only">Delete Voter</span>
+                        </a>
+                    </div>
+                </li>
+            </ul>
+            <button class="btn btn-success" data-bind="click: addNewVoter">Add new voter</button>
+
+        </div>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox"> Do you want to be included as a voter?
+            </label>
+        </div>
+        <div class="form-group">
+            <label for="message">Optional message to be included in the email sent to voters</label>
+            <textarea class="form-control" id="message" placeholder="Enter message here"></textarea>
+        </div>
     </div>
-    <div class="form-group">
-        <label for="winningOptions">How many winning options can there be?</label>
-        <input type="number" class="form-control" id="winningOptions" placeholder="Enter number of winning options here">
-    </div>
-    <div class="form-group">
-        <label for="pollLength">When should the poll end?</label>
-        <input type="date" class="form-control" id="pollLength" placeholder="Enter the date here">
-    </div>
-    <div class="form-group">
-        <label for="voterEmail">Enter the email addresses of all the people who get to vote</label>
-        <input type="email" class="form-control" id="voterEmail" placeholder="Enter voter email">
-    </div>
-    <div class="checkbox">
-        <label>
-            <input type="checkbox"> Do you want to be included as a voter?
-        </label>
-    </div>
-    <div class="form-group">
-        <label for="exampleInputFile">Or you can upload a file with a list of emails</label>
-        <input type="file" id="exampleInputFile">
-        <p class="help-block">expects textfile with email addreses on different lines</p>
-    </div>
-    <div class="form-group">
-        <label for="message">Optional message to be included in the email sent to voters</label>
-        <textarea class="form-control" id="message" placeholder="Enter message here" ></textarea>
-    </div>
-    <div class="form-group">
-        <label for="yourEmail">Your Email Address</label>
-        <input type="email" class="form-control" id="yourEmail" placeholder="Enter your email">
-    </div>
-    <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" class="form-control" id="password" placeholder="Enter password">
-    </div>
-    <div class="form-group">
-        <label for="confirmPassword">Password Confirmation</label>
-        <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm your password">
+    <div>
+        <div class="form-group">
+            <label for="yourEmail">Your Email Address</label>
+            <input type="email" class="form-control" id="yourEmail" placeholder="Enter your email">
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" placeholder="Enter password">
+        </div>
+        <div class="form-group">
+            <label for="confirmPassword">Password Confirmation</label>
+            <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm your password">
+        </div>
     </div>
     <a role="button" href="@Url.Action("Index")" class="btn btn-default">Submit</a>
 </form>

@@ -61,3 +61,12 @@ textarea {
 .validation-summary-valid {
     display: none;
 }
+
+ul.formList {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+ul.formList li {
+    margin-bottom: 5px;
+}
