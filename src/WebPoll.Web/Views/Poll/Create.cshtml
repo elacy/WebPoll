@@ -9,7 +9,7 @@
     <div id="pollSettings">
         <div class="form-group">
             <label for="pollName">Poll Name</label>
-            <input type="text" class="form-control" data-bind="text:pollName" id="pollName" placeholder="Enter Poll Name">
+            <input type="text" class="form-control" data-bind="text: pollName" id="pollName" placeholder="Enter Poll Name">
         </div>
         <div class="form-group">
             <label for="pollOption">Poll Options</label>
@@ -33,7 +33,12 @@
         </div>
         <div class="form-group">
             <label for="pollLength">When should the poll end?</label>
-            <input type="date" data-bind="text: pollLength" class="form-control" id="pollLength" placeholder="Enter the date here">
+            <div class="row">
+                <div class="col-xs-3"><input type="date" data-bind="text: pollEndDate" class="form-control" id="pollLength" placeholder="Enter the date here"></div>
+                <div class="col-xs-3"><input type="time" data-bind="text: pollEndTime" class="form-control" id="pollLength" placeholder="Enter the time here"></div>
+                <div class="col-xs-3"  ><strong data-bind="text: timeTillPollEnds"></strong></div>
+            </div>
+            
         </div>
     </div>
     <div id="voterSettings">
