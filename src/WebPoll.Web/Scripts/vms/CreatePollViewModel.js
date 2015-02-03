@@ -1,7 +1,12 @@
-﻿
+﻿ko.validation.init({
+    decorateInputElement: true,
+    errorElementClass: 'has-error',
+    errorMessageClass: 'help-block'
+});
+
 function PollOption(name) {
     var self = this;
-    self.name = ko.observable(name);
+    self.name = ko.observable(name).extend({ required: true });
 }
 function Voter(name, email) {
     var self = this;
@@ -13,7 +18,7 @@ function CreatePollViewModel() {
 
     var self = this;
 
-    self.pollName = ko.observable();
+    self.pollName = ko.observable().extend({ required: true});
     self.pollOptions = ko.observableArray([new PollOption(null), new PollOption(null)]);
     self.winningOptions = ko.observable();
     self.pollEndDate = ko.observable();
@@ -23,6 +28,8 @@ function CreatePollViewModel() {
     self.yourEmail = ko.observable();
     self.password = ko.observable();
     self.confirmPassword = ko.observable();
+
+    self.errors = ko.validation.group(self);
 
     self.timeTillPollEnds = ko.computed(function () {
         var dateString = this.pollEndDate();
@@ -47,6 +54,14 @@ function CreatePollViewModel() {
     };
     self.deleteVoter = function (voter) {
         self.voters.remove(voter);
+    };
+    self.submit = function() {
+        if (self.errors().length == 0) {
+            alert('Thank you.');
+        } else {
+            alert('Please check your submission.');
+            self.errors.showAllMessages();
+        }
     };
 
 }
