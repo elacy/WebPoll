@@ -1,4 +1,5 @@
-﻿function PollOption(name) {
+﻿
+function PollOption(name) {
     var self = this;
     self.name = ko.observable(name);
 }
@@ -12,11 +13,10 @@ function CreatePollViewModel() {
 
     var self = this;
 
-    self.pollName = ko.observable("Test");
+    self.pollName = ko.observable();
     self.pollOptions = ko.observableArray([new PollOption(null), new PollOption(null)]);
     self.winningOptions = ko.observable();
     self.pollEndDate = ko.observable();
-    self.pollEndTime = ko.observable();
     self.voters = ko.observableArray([new Voter(null, null), new Voter(null, null)]);
     self.includeCreatorAsVoter = ko.observable();
     self.message = ko.observable();
@@ -24,8 +24,16 @@ function CreatePollViewModel() {
     self.password = ko.observable();
     self.confirmPassword = ko.observable();
 
-    self.timeTillPollEnds = ko.computed(function() {
-        return this.pollEndDate();
+    self.timeTillPollEnds = ko.computed(function () {
+        var dateString = this.pollEndDate();
+        if (!dateString) {
+            return null;
+        }
+        var date = moment(dateString.trim());
+        if (!date.isValid() || date < moment()) {
+            return null;
+        }
+        return date.fromNow().toString();
     },this);
 
     self.addNewPollOption = function() {

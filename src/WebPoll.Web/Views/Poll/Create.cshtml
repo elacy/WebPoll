@@ -4,21 +4,70 @@
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@section scripts
+{
+    <script type="text/javascript">
+    $(function () {
+        $("#pollEndDate").datepicker();
+    });
+    $('form#CreatePoll').validate({
+        rules: {
+            pollName: {
+                minlength: 3,
+                required: true
+            },
+            pollOption: {
+                required: true
+            },
+            winningOptions: {
+                required: true
+            },
+            pollEndDate: {
+                
+            },
+            voterName: {
+                
+            },
+            voterEmail: {
+
+            },
+            message: {
+                
+            },
+            yourEmail: {
+                
+            },
+            password: {
+                
+            },
+            confirmPassword: {
+                
+            }
+        },
+        highlight: function (element) {
+            $(element).closest('.form-group').addClass('has-error');
+        },
+        unhighlight: function (element) {
+            $(element).closest('.form-group').removeClass('has-error');
+        }
+    });
+</script>
+}
 <h2>Create a poll</h2>
-<form>
+<form id="CreatePoll">
     <div id="pollSettings">
         <div class="form-group">
             <label for="pollName">Poll Name</label>
-            <input type="text" class="form-control" data-bind="text: pollName" id="pollName" placeholder="Enter Poll Name">
+            <input type="text" class="form-control" data-bind="value: pollName" name="pollName" placeholder="Enter Poll Name">
         </div>
         <div class="form-group">
             <label for="pollOption">Poll Options</label>
             <ul class="formList" data-bind="foreach: pollOptions ">
                 <li>
                     <div class="input-group">
-                        <input type="text" class="form-control" id="pollOption" data-bind="text:pollName" placeholder="Enter Option Name">
+                        <input type="text" class="form-control" name="pollOption" data-bind="value:name" placeholder="Enter Option Name">
                         <span class="input-group-btn">
-                            <a class="btn btn-danger" data-bind="click: $root.pollOptions().length > 1 && $root.deleteOption" href="#" title="Delete Poll Option">
+                            <a class="btn btn-danger" data-bind="click: $root.pollOptions().length > 2 && $root.deleteOption" href="#" title="Delete Poll Option">
                                 <span class="glyphicon glyphicon-remove" aria-hidden="true"></span><span class="sr-only">Delete Poll Option</span>
                             </a>
                         </span>
@@ -29,13 +78,14 @@
         </div>
         <div class="form-group">
             <label for="winningOptions">How many winning options can there be?</label>
-            <input type="number" class="form-control" data-bind="text: winningOptions" id="winningOptions" placeholder="Enter number of winning options here">
+            <input type="number" class="form-control" data-bind="value: winningOptions" name="winningOptions" placeholder="Enter number of winning options here">
         </div>
         <div class="form-group">
-            <label for="pollLength">When should the poll end?</label>
+            <label for="pollEndDate">When should the poll end?</label>
             <div class="row">
-                <div class="col-xs-3"><input type="date" data-bind="text: pollEndDate" class="form-control" id="pollLength" placeholder="Enter the date here"></div>
-                <div class="col-xs-3"><input type="time" data-bind="text: pollEndTime" class="form-control" id="pollLength" placeholder="Enter the time here"></div>
+                <div class="col-xs-6">
+                    <input type="date" data-bind="value: pollEndDate" class="form-control" name="pollEndDate" placeholder="Enter the date here">
+                </div>
                 <div class="col-xs-3"  ><strong data-bind="text: timeTillPollEnds"></strong></div>
             </div>
             
@@ -46,8 +96,8 @@
             <label for="voterEmail">Voter Details</label>
             <ul class="formList" data-bind="foreach: voters ">
                 <li class="row">
-                    <div class="col-xs-6"><input type="email" class="form-control" data-bind="text: name" id="voterEmail" placeholder="Enter voter name"></div>
-                    <div class="col-xs-5"><input type="email" class="form-control" data-bind="text: email" id="voterEmail" placeholder="Enter voter email"></div>
+                    <div class="col-xs-6"><input type="email" class="form-control" data-bind="value: name" id="voterEmail" placeholder="Enter voter name"></div>
+                    <div class="col-xs-5"><input type="email" class="form-control" data-bind="value: email" id="voterEmail" placeholder="Enter voter email"></div>
                     <div class="col-xs-1">
                         <a class="btn btn-danger" data-bind="click: $root.voters().length > 1 && $root.deleteVoter" href="#" title="Delete Voter">
                             <span class="glyphicon glyphicon-remove" aria-hidden="true"></span><span class="sr-only">Delete Voter</span>
