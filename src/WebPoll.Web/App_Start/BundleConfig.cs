@@ -31,8 +31,6 @@ namespace WebPoll.Web
                         "~/Scripts/bootstrap.js"));
 
 
-            bundles.Add(new ScriptBundle("~/bundles/bootstrap-datetimepicker").Include(
-                        "~/Scripts/bootstrap-datetimepicker.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/moment").Include(
                         "~/Scripts/moment-with-locales.js"));
@@ -51,7 +49,6 @@ namespace WebPoll.Web
 
             bundles.Add(new StyleBundle("~/Content/moment-datepicker").Include("~/Content/moment-datepicker/datepicker.css"));
             bundles.Add(new StyleBundle("~/Content/bootstrap").Include("~/Content/bootstrap.css"));
-            bundles.Add(new StyleBundle("~/Content/bootstrap-datetimepicker").Include("~/Content/bootstrap-datetimepicker.css"));
             bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/site.css"));
 
             bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
