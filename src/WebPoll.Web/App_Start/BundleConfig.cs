@@ -19,10 +19,7 @@ namespace WebPoll.Web
 
             bundles.Add(new ScriptBundle("~/bundles/knockout-sortable").Include(
                         "~/Scripts/knockout-sortable.js"));
-
-            bundles.Add(new ScriptBundle("~/bundles/knockoutViewModels").Include(
-                        "~/Scripts/vms/*.js"));
-
+            
             bundles.Add(new ScriptBundle("~/bundles/sammy").Include(
                         "~/Scripts/sammy-{version}.js"));
 

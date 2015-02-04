@@ -29,7 +29,7 @@ namespace WebPoll.Web.Controllers
             return View("IncompletePoll");
         }
 
-        public ActionResult Vote(Guid guid)
+        public ActionResult Vote(Guid id)
         {
             return View();
         }

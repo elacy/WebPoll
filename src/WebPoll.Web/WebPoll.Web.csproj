@@ -256,6 +256,7 @@
     <Content Include="Scripts\site\kovalidation.js" />
     <Content Include="Scripts\site\moment.js" />
     <Content Include="Scripts\vms\CreatePollViewModel.js" />
+    <Content Include="Scripts\vms\VoteViewModel.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>

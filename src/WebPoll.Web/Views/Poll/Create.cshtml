@@ -6,6 +6,7 @@
 }
 @section scripts
 {
+    @Scripts.Render("~/Scripts/vms/CreatePollViewModel.js")
     <script type="text/javascript">
         $(function () {
             $("#pollEndDate").datepicker({ minDate: 0, dateFormat: "yy-mm-dd"});

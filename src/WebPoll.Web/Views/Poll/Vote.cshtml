@@ -4,5 +4,13 @@
     ViewBag.Title = "";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+@section scripts
+{
+    @Scripts.Render("~/Scripts/vms/VoteViewModel.js")
+}
 <h2>Which Restaurant do we like</h2>
+<p>Drag each of the options below into the order that you prefer, would the option you most prefer at the top, 2nd preference directly below and so on till the option you least prefer</p>
+<ul class="list-group" data-bind="sortable: pollOptions">
+    <li class="list-group-item" data-bind="text: name"></li>
+</ul>
+<button class="btn btn-primary" data-bind="click: submit">Vote</button>
