@@ -8,10 +8,10 @@
 {
     <script type="text/javascript">
         $(function () {
-        $("#pollEndDate").datepicker();
-    });
-    
-</script>
+            $("#pollEndDate").datepicker({ minDate: 0, dateFormat: "yy-mm-dd"});
+        });
+
+    </script>
 }
 <h2>Create a poll</h2>
 <form id="CreatePoll">
@@ -24,31 +24,27 @@
             <label for="pollOption">Poll Options</label>
             <ul class="formList" data-bind="foreach: pollOptions ">
                 <li>
-                    <div class="input-group" data-bind="validationElement: name">
-                        <input type="text" class="form-control" name="pollOption" data-bind="value:name" placeholder="Enter Option Name">
-                        <span class="input-group-btn">
-                            <a class="btn btn-danger" data-bind="click: $root.pollOptions().length > 2 && $root.deleteOption" href="#" title="Delete Poll Option">
-                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span><span class="sr-only">Delete Poll Option</span>
-                            </a>
-                        </span>
+                    <div class="row" data-bind="validationElement: name">
+                        <div class="col-xs-11">
+                            <input type="text" class="form-control" name="pollOption" data-bind="value:name" placeholder="Enter Option Name">
+                        </div>
+                        <div class="col-xs-1">
+                            <button type="button" class="btn btn-danger" data-bind="click:$root.deleteOption, enable: $root.pollOptions().length > 2 && $root.deleteOption">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            </button>
+                        </div>
                     </div>
                 </li>
             </ul>
             <button class="btn btn-success" data-bind="click: addNewPollOption">Add new poll option</button>
         </div>
-        <div class="form-group">
+        <div class="form-group" data-bind="validationElement: winningOptions">
             <label for="winningOptions">How many winning options can there be?</label>
             <input type="number" class="form-control" data-bind="value: winningOptions" name="winningOptions" placeholder="Enter number of winning options here">
         </div>
-        <div class="form-group">
-            <label for="pollEndDate">When should the poll end?</label>
-            <div class="row">
-                <div class="col-xs-6">
-                    <input type="date" data-bind="value: pollEndDate" class="form-control" name="pollEndDate" placeholder="Enter the date here">
-                </div>
-                <div class="col-xs-3"  ><strong data-bind="text: timeTillPollEnds"></strong></div>
-            </div>
-            
+        <div class="form-group" data-bind="validationElement: pollEndDate">
+            <label for="pollEndDate">When should the last day of the poll be?</label>
+            <input type="date" data-bind="value: pollEndDate" class="form-control" id="pollEndDate" name="pollEndDate" placeholder="Enter the date here">
         </div>
     </div>
     <div id="voterSettings">
@@ -56,12 +52,12 @@
             <label for="voterEmail">Voter Details</label>
             <ul class="formList" data-bind="foreach: voters ">
                 <li class="row">
-                    <div class="col-xs-6"><input type="email" class="form-control" data-bind="value: name" id="voterEmail" placeholder="Enter voter name"></div>
-                    <div class="col-xs-5"><input type="email" class="form-control" data-bind="value: email" id="voterEmail" placeholder="Enter voter email"></div>
+                    <div class="col-xs-6" data-bind="validationElement: name"><input type="email" class="form-control" data-bind="value: name" id="voterEmail" placeholder="Enter voter name"></div>
+                    <div class="col-xs-5" data-bind="validationElement: email"><input type="email" class="form-control" data-bind="value: email" id="voterEmail" placeholder="Enter voter email"></div>
                     <div class="col-xs-1">
-                        <a class="btn btn-danger" data-bind="click: $root.voters().length > 1 && $root.deleteVoter" href="#" title="Delete Voter">
-                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span><span class="sr-only">Delete Voter</span>
-                        </a>
+                        <button type="button" class="btn btn-danger" title="Delete Voter" data-bind="click:$root.deleteVoter, enable: $root.voters().length > 2 && $root.deleteOption">
+                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                        </button>
                     </div>
                 </li>
             </ul>
@@ -70,26 +66,26 @@
         </div>
         <div class="checkbox">
             <label>
-                <input type="checkbox"> Do you want to be included as a voter?
+                <input type="checkbox" data-bind="value: includeCreatorAsVoter"> Do you want to be included as a voter?
             </label>
         </div>
-        <div class="form-group">
+        <div class="form-group" data-bind="validationElement: message">
             <label for="message">Optional message to be included in the email sent to voters</label>
-            <textarea class="form-control" id="message" placeholder="Enter message here"></textarea>
+            <textarea class="form-control" id="message" data-bind="text: message" placeholder="Enter message here"></textarea>
         </div>
     </div>
     <div>
-        <div class="form-group">
+        <div class="form-group" data-bind="validationElement: yourEmail">
             <label for="yourEmail">Your Email Address</label>
-            <input type="email" class="form-control" id="yourEmail" placeholder="Enter your email">
+            <input type="email" class="form-control" id="yourEmail" data-bind="value: yourEmail" placeholder="Enter your email">
         </div>
-        <div class="form-group">
+        <div class="form-group" data-bind="validationElement: password">
             <label for="password">Password</label>
-            <input type="password" class="form-control" id="password" placeholder="Enter password">
+            <input type="password" class="form-control" id="password" data-bind="value: password" placeholder="Enter password">
         </div>
-        <div class="form-group">
+        <div class="form-group" data-bind="validationElement: confirmPassword">
             <label for="confirmPassword">Password Confirmation</label>
-            <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm your password">
+            <input type="password" class="form-control" id="confirmPassword" data-bind="value: confirmPassword" placeholder="Confirm your password">
         </div>
     </div>
     <a role="button" href="#" data-bind="click: submit" class="btn btn-default">Submit</a>
